@@ -1,0 +1,66 @@
+   :root{
+      --bg:#3a3636;
+      --card:#2e2a2a;
+      --accent:#e63946;
+      --muted:#b9b9b9;
+      --gap:18px;
+      --radius:20px;
+      --shadow:0 8px 24px rgba(0,0,0,.45);
+    }
+    /* Mobile-first */
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:#fff}
+    .app{
+      min-height:100vh;padding:18px;display:grid;grid-template-columns:1fr;gap:var(--gap);
+      align-items:start;
+    }
+
+    /* shared small cards */
+    .card{background:var(--card);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+    .row{display:flex;gap:12px;align-items:center}
+    .icon-btn{width:44px;height:44px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+    .icon-btn i{pointer-events:none}
+
+    /* top nav */
+    .top{
+      display:flex;justify-content:space-between;align-items:center;gap:12px;
+    }
+    .tabs{display:flex;gap:12px;align-items:center}
+    .tab{padding:10px 12px;border-radius:12px;cursor:pointer}
+    .tab:hover{transform:translateY(-4px);transition:.18s}
+
+    /* hero */
+    .hero{position:relative;border-radius:18px;overflow:hidden}
+    .hero img{width:100%;height:75vh;object-fit:cover;display:block; object-position: right;}
+    .date-card{position:absolute;right:16px;top:16px;background:rgba(46,42,42,.85);padding:12px;border-radius:12px;text-align:center;cursor:pointer}
+    .continue{position:absolute;left:16px;bottom:120px;background:rgba(46,42,42,.85);padding:10px 14px;border-radius:12px}
+    .video-thumb{position:absolute;left:16px;bottom:16px;width:160px;height:96px;border-radius:12px;background-size:cover;display:grid;place-items:center}
+    .play{width:44px;height:44px;border-radius:50%;background:#fff;display:grid;place-items:center;color:#111}
+    .download-fab{position:absolute;left:192px;bottom:24px;width:52px;height:52px;border-radius:50%;background:var(--accent);display:grid;place-items:center;cursor:pointer}
+
+    /* side panels (hidden on mobile) */
+    .left-panel,.right-panel{display:none}
+    .profile-compact{display:flex;flex-direction:column;align-items:center;gap:12px}
+
+    /* popups */
+    .modal-backdrop{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.55);z-index:50}
+    .modal{background:#1c1c1e;padding:20px;border-radius:14px;width:min(92%,360px);text-align:center}
+    .close-x{position:absolute;top:12px;right:12px;background:none;border:none;color:#ccc;font-size:20px;cursor:pointer}
+
+    /* compact chat */
+    .chat-card{display:flex;gap:12px;align-items:center;justify-content:space-between}
+    .msg.bot{background:#2c2c2e;padding:8px 12px;border-radius:12px;display:inline-block}
+    .msg.user{background:var(--accent);padding:8px 12px;border-radius:12px;color:white;margin-left:auto}
+
+    /* bounce animation */
+    .bounce{animation:bounce 1s ease-in-out infinite}
+    @keyframes bounce{0%{transform:translateY(-4px)}50%{transform:translateY(0)}100%{transform:translateY(4px)}}
+
+    /* TABLET+ DESKTOP layout */
+    @media(min-width:900px){
+      .app{grid-template-columns:180px 1fr 220px;align-items:start}
+      .left-panel,.right-panel{display:flex;flex-direction:column;gap:18px}
+      .top{grid-column:2;display:flex}
+      .hero img{height:460px}
+      .profile-compact .pfp{width:70px;height:70px;border-radius:50%;overflow:hidden}
+    }
